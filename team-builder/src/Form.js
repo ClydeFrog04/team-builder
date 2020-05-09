@@ -15,6 +15,7 @@ const FlexForm = styled.form`
     min-width: 250px;
 `;
 const FormContainer = styled.div`
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 `;
