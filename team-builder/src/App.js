@@ -1,26 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Form from "./Form";
+import MemberCard from "./MemberCard";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [members, setMembers] = useState([{
+            id: 1,
+            name: "ClydeFrog04",
+            email: "randy@randalegan.com",
+            role: "Coder? Problem Solver? I type things until they work and somehow nobody seems to notice."
+        }]
+    );
+
+    const handleSubmit = (member) =>{
+        setMembers([...members, member]);
+        console.log(members);
+    }
+
+    const memberCards = members.map(member =>{
+        return(
+            <MemberCard key={member.name} member={member}/>
+        );
+    });
+
+    return (
+        <div className="App">
+            <Form onSubmit={handleSubmit}/>
+            {memberCards}
+        </div>
+    );
 }
 
 export default App;
