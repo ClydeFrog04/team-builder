@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 
 const borderRadius = "4px";
@@ -27,6 +27,9 @@ export default function Form(props) {
         email: "",
         role: ""
     });
+    useEffect(() => {
+        if(props.memberToEdit.id){setFormData(props.memberToEdit);}
+    }, [props.memberToEdit]);
 
     const clearForm = () => {
         setFormData({
@@ -40,6 +43,7 @@ export default function Form(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.onSubmit(formData);
+        console.log("Form data: ", formData);
         clearForm();
     }
 
