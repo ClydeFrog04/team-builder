@@ -43,7 +43,6 @@ export default function Form(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.onSubmit(formData);
-        console.log("Form data: ", formData);
         clearForm();
     }
 
