@@ -21,6 +21,7 @@ function App() {
     const [memberToEdit, setMemberToEdit] = useState({});
 
     const handleSubmit = (member) => {
+        if(member.name.replace(/ /g, "") === "")return;//now we can't add blank users
         if(memberToEdit.id) {
             editMember(member);//member is the edited member data, so it needs to be passed to edit. memberToEdit contains the previous data of the member we want to edit, so if we edit based on that, we aren't changing the data at all
         }else {
